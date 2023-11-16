@@ -1,3 +1,8 @@
+###
+### CS667 Data Science with Python, Final Project, Jon Organ
+###
+
+
 import pandas as pd
 
 class music_rec:
@@ -6,7 +11,7 @@ class music_rec:
 
 
 	def SongRec(self, song_info):
-		return "Some song from song info"
+		return song_info['name']
 
 
 	def UserRec(self, user_info):
@@ -18,6 +23,7 @@ class music_rec:
 
 # Classifiers - Observations (valence, year, acousticness, danceability, duration_ms, energy, explicit,
 # instrumentalness, key, liveness, loudness, mode, popularity, speechiness, tempo), Prediction (Good, Bad)
+# name, artists
 	# kNN (based off single or user history)
 		# kNN with all features
 		# kNN without duration_ms, explicit, key, and mode
