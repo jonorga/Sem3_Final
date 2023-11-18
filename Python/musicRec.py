@@ -13,11 +13,16 @@ class music_rec:
 
 	def SongRec(self, song_info):
 		#closest = temp.iloc[(temp["Age"]-row["Age"]).abs().argsort()[:5]]
-		temp_df = self.df.drop(self.df[self.df.name == song_info.name].index)
-		closest = self.df.iloc[(self.df["valence"]-song_info["valence"]
+		#temp_df = self.df.drop(self.df[self.df.name == song_info.name].index)
+		temp_df = self.df.drop(song_info.name)
+		closest = temp_df.iloc[( (temp_df["valence"]-song_info["valence"]) + 
+			(temp_df["acousticness"]-song_info["acousticness"]) +
+			(temp_df["danceability"]-song_info["danceability"])
 			).abs().argsort()[:1]]
-		print(song_info)
-		print(closest)
+		print("Input song:")
+		print(song_info['name'], song_info['artists'])
+		print("Output recommendation:")
+		print(closest['name'], closest['artists'])
 		return closest
 
 
