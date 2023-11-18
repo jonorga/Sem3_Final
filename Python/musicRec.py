@@ -4,6 +4,7 @@
 
 
 import pandas as pd
+from sklearn.neighbors import KNeighborsClassifier
 
 class music_rec:
 	def __init__(self, file_name):
@@ -11,7 +12,13 @@ class music_rec:
 
 
 	def SongRec(self, song_info):
-		return song_info['name']
+		#closest = temp.iloc[(temp["Age"]-row["Age"]).abs().argsort()[:5]]
+		temp_df = self.df.drop(self.df[self.df.name == song_info.name].index)
+		closest = self.df.iloc[(self.df["valence"]-song_info["valence"]
+			).abs().argsort()[:1]]
+		print(song_info)
+		print(closest)
+		return closest
 
 
 	def UserRec(self, user_info):
