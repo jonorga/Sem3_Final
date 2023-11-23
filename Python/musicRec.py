@@ -5,6 +5,7 @@
 
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
+# Version 1.0
 
 class music_rec:
 	def __init__(self, file_name):
@@ -12,17 +13,23 @@ class music_rec:
 
 
 	def SongRec(self, song_info):
-		#closest = temp.iloc[(temp["Age"]-row["Age"]).abs().argsort()[:5]]
-		#temp_df = self.df.drop(self.df[self.df.name == song_info.name].index)
 		temp_df = self.df.drop(song_info.name)
 		closest = temp_df.iloc[( (temp_df["valence"]-song_info["valence"]) + 
 			(temp_df["acousticness"]-song_info["acousticness"]) +
+			(temp_df["energy"]-song_info["energy"]) +
+			(temp_df["instrumentalness"]-song_info["instrumentalness"]) +
+			(temp_df["liveness"]-song_info["liveness"]) +
+			(temp_df["popularity"]-song_info["popularity"]) +
+			(temp_df["speechiness"]-song_info["speechiness"]) +
+			(temp_df["tempo"]-song_info["tempo"]) +
 			(temp_df["danceability"]-song_info["danceability"])
 			).abs().argsort()[:1]]
-		print("Input song:")
-		print(song_info['name'], song_info['artists'])
-		print("Output recommendation:")
-		print(closest['name'], closest['artists'])
+		print("-----------------------------------")
+		print("Input song name:", song_info['name'])
+		print("Input song artist(s):", song_info['artists'])
+		print("-----------------------------------")
+		print("Output recommendation song name:", closest['name'].values[0])
+		print("Output recommendation song artist(s):", closest['artists'].values[0])
 		return closest
 
 
