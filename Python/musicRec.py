@@ -2,18 +2,21 @@
 ### CS667 Data Science with Python, Final Project, Jon Organ
 ###
 
+# Spotify dataset URL: https://www.kaggle.com/datasets/andrewmvd/spotify-playlists/
+
 
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 # Version 1.0
 
 class music_rec:
-	def __init__(self, file_name):
-		self.df = pd.read_csv(file_name)
+	def __init__(self, music_file, playlist_file):
+		self.df_m = pd.read_csv(music_file)
+		self.df_p = pd.read_csv(playlist_file)
 
 
 	def SongRec(self, song_info):
-		temp_df = self.df.drop(song_info.name)
+		temp_df = self.df_m.drop(song_info.name)
 		closest = temp_df.iloc[( (temp_df["valence"]-song_info["valence"]) + 
 			(temp_df["acousticness"]-song_info["acousticness"]) +
 			(temp_df["energy"]-song_info["energy"]) +
@@ -31,6 +34,20 @@ class music_rec:
 		print("Output recommendation song name:", closest['name'].values[0])
 		print("Output recommendation song artist(s):", closest['artists'].values[0])
 		return closest
+
+	def SongRec2(self, song_info):
+		artists_raw = song_info['artists']
+		artists = artists_raw[1:-1].split(",")
+
+		artists[0] = artists[0][1:-1]
+		i = 1
+		while i < len(artists):
+			artists[i] = artists[i][2:-1]
+			i += 1
+
+		for artist in artists:
+			print(artist)
+
 
 
 	def UserRec(self, user_info):

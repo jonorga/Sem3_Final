@@ -8,8 +8,8 @@ df = pd.read_csv("data_music.csv")
 sample_song = df.iloc[19520]
 
 
-mRec = music_rec("data_music.csv")
-mRec.SongRec(sample_song)
+mRec = music_rec("data_music.csv", "spotify_dataset.csv")
+mRec.SongRec2(sample_song)
 #mRec.UserRec("asd")
 
 
