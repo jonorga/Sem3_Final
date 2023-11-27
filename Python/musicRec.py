@@ -46,7 +46,18 @@ class music_rec:
 			i += 1
 
 		for artist in artists:
-			print(artist)
+			if artist in self.df_p['artistname'].values:
+				print(artist, "in file")
+				if song_info['name'] in self.df_p['trackname'][self.df_p['artistname'] == artist].values:
+					temp_df = self.df_p[(self.df_p['artistname'] == artist) & (self.df_p['trackname'] == song_info['name'])]
+					#print(temp_df[['trackname', 'artistname', 'playlistname']])
+					# TODO: Take all of the other playlists, make a union list of all songs on all of them
+					# and count how often they appear, recommend the one that appears the most
+					# TODO: maybe combine this with the first one
+				else:
+					print("song not found")
+			else:
+				print(artist, "not found")
 
 
 

@@ -14,4 +14,14 @@
 - Conclusion, how did it turn out?\
 - Questions?\
 \
-- 5 to 8 minutes for presentation}
+- 5 to 8 minutes for presentation\
+- Java has to run through the class template and use JUnit tests\
+- Use thread pool pattern for running a bunch of small tasks\
+	- https://java-design-patterns.com/patterns/thread-pool/#explanation\
+\
+\
+Music recommendation: Users request a recommendation, their general information is sent for analysis against a database using machine learning, then a recommendation is returned to the user\
+- Java handles gathering general data, users data, and returning request\
+	- Uses mediator pattern (People querying a database)\
+	- Flyweight pattern for since huge database\
+	- Blackboard design pattern (for machine learning portion)}
