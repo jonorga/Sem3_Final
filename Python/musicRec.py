@@ -6,13 +6,27 @@
 
 
 import pandas as pd
-from sklearn.neighbors import KNeighborsClassifier
-# Version 1.0
+pd.options.mode.chained_assignment = None  # default='warn'
+# Version 2.0
 
 class music_rec:
 	def __init__(self, music_file, playlist_file):
 		self.df_m = pd.read_csv(music_file)
 		self.df_p = pd.read_csv(playlist_file)
+
+	def MakeRec(self, in_track, in_artist, out_track, out_artist):
+		parsed_in_art = ""
+		for a in in_artist:
+			parsed_in_art += a
+			parsed_in_art += ", "
+		parsed_in_art = parsed_in_art[:-2]
+
+		print("Input song ==================================")
+		print("Song name:", in_track)
+		print("Artist(s):", parsed_in_art)
+		print("Output song ==================================")
+		print("Song name:", out_track)
+		print("Artist(s):", out_artist)
 
 
 	def SongRec(self, song_info):
@@ -35,6 +49,7 @@ class music_rec:
 		print("Output recommendation song artist(s):", closest['artists'].values[0])
 		return closest
 
+
 	def SongRec2(self, song_info):
 		artists_raw = song_info['artists']
 		artists = artists_raw[1:-1].split(",")
@@ -47,16 +62,14 @@ class music_rec:
 
 		for artist in artists:
 			if artist in self.df_p['artistname'].values:
-				print(artist, "in file")
 				if song_info['name'] in self.df_p['trackname'][self.df_p['artistname'] == artist].values:
 					temp_df = self.df_p[(self.df_p['artistname'] == artist) & (self.df_p['trackname'] == song_info['name'])]
-					#print(temp_df[['trackname', 'artistname', 'playlistname']])
 
 					union_df = self.df_p[self.df_p['playlistname'].isin(temp_df['playlistname'].values)]
-					print(union_df)
-					# TODO: Take all of the other playlists, make a union list of all songs on all of them
-					# and count how often they appear, recommend the one that appears the most
-					# TODO: maybe combine this with the first one
+					union_df['full_title'] = union_df['trackname'] + "     " + union_df['artistname']
+					reclist = union_df['full_title'].value_counts()
+					out_info = reclist.axes[0][0].split("     ")
+					self.MakeRec(song_info['name'], artists, out_info[0], out_info[1])
 				else:
 					print("song not found")
 			else:
