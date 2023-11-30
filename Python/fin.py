@@ -9,7 +9,8 @@ sample_song = df.iloc[30753]
 
 
 mRec = music_rec("data_music.csv", "spotify_dataset.csv")
-mRec.SongRec2(sample_song)
+mRec.SongRec(sample_song)
+mRec.PlaylistRec(sample_song)
 
 
 
