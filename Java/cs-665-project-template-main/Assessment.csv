@@ -1,0 +1,19 @@
+﻿Version,Classifier,Person,Input #,Input Song Name,Input Song Artist,Output Rec Name,Output Rec Artist,Assessment
+1,Music Data,Jon,17924,Yonkers,"Tyler, The Creator",Things to You,"Skeeter Davis, NRBQ",Bad
+1,Music Data,Jon,30753,Crazy Little Thing Called Love,Queen,You,George Duke,Good
+1,Music Data,Jon,50106,Is This Love,Bob Marley & The Wailers,Drunk Off Your Love (feat. Sky Blu of LMFAO),"'Shwayze', 'Cisco Adler'",Good
+1,Music Data,Jon,9625,Big Yellow Taxi,Joni Mitchell,Belief,John Mayer,Bad
+1,Music Data,Jon,106893,Boom Boom Pow,Black Eyed Peas,La Barca Marina,TIN TAN Y MARCELO,Bad
+1,Music Data,Jon,106889,Landslide,"'Stevie Nicks', 'Lindsey Buckingham'",GCN Mushroom Bridge,The Greatest Bits,Bad
+1,Music Data,Jon,112232,Do Nothing Till You Hear From Me,Ella Fitzgerald,Buona Sera,Dean Martin,Good
+1,Music Data,Jon,19515,Old Town Road - Remix,"'Lil Nas X', 'Billy Ray Cyrus'",Adiós Mi Amor,Los Dareyes De La Sierra,Bad
+1,Music Data,Jon,19520,Dancing With A Stranger (with Normani),"'Sam Smith', 'Normani'",Dream Is Collapsing,Hans Zimmer,Bad
+2,Music Data,Jon,30753,Crazy Little Thing Called Love,Queen,Dreams,"'The Rippingtons', 'Russ Freeman', 'David Benoit', 'David Koz', 'Gregg Karukas', 'Jimmy Johnson', 'Tony Morales', 'Steve Reid'",Bad
+2,Playlist,Jon,30753,Crazy Little Thing Called Love,Queen,Radioactive,Imagine Dragons,Bad
+2,Refined Playlist,Jon,30753,Crazy Little Thing Called Love,Queen,Ho Hey,Lumineers,Good
+2,Music Data,Jon,15851,"Harder, Better, Faster, Stronger",Daft Punk,Istanbul (Not Constantinople),The Four Lads,Bad
+2,Playlist,Jon,15851,"Harder, Better, Faster, Stronger",Daft Punk,Voyager,Daft Punk,Good
+2,Refined Playlist,Jon,15851,"Harder, Better, Faster, Stronger",Daft Punk,Voyager,Daft Punk,Good
+2,Music Data,Jon,9625,Big Yellow Taxi,Joni Mitchell,Belief,John Mayer,Bad
+2,Playlist,Jon,9625,Big Yellow Taxi,Joni Mitchell,Radioactive,Imagine Dragons,Bad
+2,Refined Playlist,Jon,9625,Big Yellow Taxi,Joni Mitchell,Royals,Lorde,Bad

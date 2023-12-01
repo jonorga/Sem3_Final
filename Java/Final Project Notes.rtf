@@ -26,6 +26,15 @@ Music recommendation: Users request a recommendation, their general information 
 	- Flyweight pattern for since huge database\
 	- Blackboard design pattern (for machine learning portion)\
 \
+- Abstract class Task\
+- Each sub point in todo is a class descending from Task\
+	- NameMatchTask\
+	- ArtistRemovalTask\
+	- PlaylistAggTask\
+	- CountTask\
+- Worker class implements runnable\
+- Actual running parts happen in JUnit test\
+\
 TODO:\
 - Create thread pool pattern for data sets\
 	- One task is to find all songs with matching names\
