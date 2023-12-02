@@ -7,13 +7,20 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.concurrent.*;
 
+// TODO: Build your own version, completely ignore the example implementatiion of pattern
+
 public class JTest {
 
 	@Test
 	public void TestBusinessCustomer() {
-		Object tasks = List.of(
-	        new ParseCSVTask());
+		System.out.println("Starting program");
+		//Object tasks = List.of(
+	    //    new ParseCSVTask(), new ParseCSVTask());
+	    Task[] tasks = {new ParseCSVTask(), new ParseCSVTask()};
+
 		Object executor = Executors.newFixedThreadPool(3);
+
+		new Worker(tasks[0]);
 
 
 		//tasks.stream().map(Worker::new).forEach(executor::execute);
@@ -21,7 +28,7 @@ public class JTest {
     	//executor.shutdown();
 
 
-    	
+		System.out.println("Ending program");
 		/*
 		var tasks = List.of(
 	        new PotatoPeelingTask(3),
