@@ -19,6 +19,10 @@ public abstract class Task {
         this.id = ID_GENERATOR.incrementAndGet();
    }
 
+    public int getId() {
+        return id;
+    }
+
    public void DoTask() {}
 
     /**

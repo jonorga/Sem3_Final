@@ -13,7 +13,7 @@ public class ParseCSVTask extends Task {
    @Override
    public void DoTask()
    {
-        System.out.println("ParseCSVTask DoTask method");
+        System.out.println("ParseCSVTask DoTask method, ID: " + getId());
    }
 
 

@@ -9,6 +9,11 @@
 package music_recommender;
 
 public class NameMatchTask extends Task {
+    @Override
+   public void DoTask()
+   {
+        System.out.println("NameMatchTask DoTask method, ID: " + getId());
+   }
    
 
     /**

@@ -7,48 +7,48 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.concurrent.*;
 
-// TODO: Build your own version, completely ignore the example implementatiion of pattern
 
 public class JTest {
 
 	@Test
 	public void TestBusinessCustomer() {
 		System.out.println("Starting program");
-		Task[] tasks = {new ParseCSVTask(), new ParseCSVTask()};
-
-
-		//Worker[] workers = {new Worker(tasks[0]), new Worker(tasks[1])};
-		ArrayList<Worker> workers = new ArrayList<>(Arrays.asList( new Worker(tasks[0]), new Worker(tasks[1]) ));
-
-
  		ThreadFactory ThreadFactory = Executors.defaultThreadFactory();
-		ExecutorService executor = Executors.newFixedThreadPool(3, ThreadFactory);
+		ExecutorService executor = Executors.newFixedThreadPool(1, ThreadFactory);
 		ThreadPoolExecutor mypool = (ThreadPoolExecutor) executor;  
-		System.out.println("size of mypool: " + mypool.getPoolSize());
+		
+
+		
+		// Parse CSV Task
+		System.out.println("Parse CSV task started...");
+		executor.submit(new Worker(new ParseCSVTask()));
+		executor.shutdown();
+		while (!executor.isTerminated()) {
+     		Thread.yield();
+    	}
+    	System.out.println("Parse CSV task finished...");
+
+
+
+
+		// Name Match Task
+		System.out.println("Name Match task started...");
+		executor = Executors.newFixedThreadPool(3, ThreadFactory);
+		Task[] tasks = {new NameMatchTask(), new NameMatchTask(), new NameMatchTask(), new NameMatchTask()};
+		ArrayList<Worker> workers = new ArrayList<>(Arrays.asList( 
+			new Worker(tasks[0]), new Worker(tasks[1]), new Worker(tasks[2]), new Worker(tasks[3])
+			));
 		for (Worker worker : workers) {
 			executor.submit(worker);
 		}
-		//executor.submit(new Worker(tasks[0]));
-		//executor.submit( tasks.forEach(task -> new Worker(task)) );
-		//executor.invokeAny(workers);
 		executor.shutdown();
+		while (!executor.isTerminated()) {
+     		Thread.yield();
+    	}
+    	System.out.println("Name Match task finished...");
 
-
-		//tasks.stream().map(Worker::new).forEach(executor::execute);
-    	// All tasks were executed, now shutdown
-    	//executor.shutdown();
 
 
 		System.out.println("Ending program");
-		/*
-		var tasks = List.of(
-	        new PotatoPeelingTask(3),
-	        new PotatoPeelingTask(5));
-		
-		Customer testCase = new Customer();
-		testCase.SetCustomerType(new BusinessEmail());
-		assertEquals("To whom it may concern, we are reaching out regarding this business email.", 
-			testCase.GetEmail());
-		*/
 	}
 }
