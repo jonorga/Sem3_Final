@@ -21,6 +21,7 @@ public class Worker implements Runnable {
      */
     @Override
     public void run() {
-        System.out.println("Run method");
+        System.out.println("Worker run method");
+        task.DoTask();
     }
 }
