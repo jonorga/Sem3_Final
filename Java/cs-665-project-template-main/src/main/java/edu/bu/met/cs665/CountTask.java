@@ -9,7 +9,11 @@
 package music_recommender;
 
 public class CountTask extends Task {
-   
+    public CountTask()
+    {
+        super();
+        setTaskName("Count");
+    }
 
     /**
      * This method gets the email from the create email behavior
