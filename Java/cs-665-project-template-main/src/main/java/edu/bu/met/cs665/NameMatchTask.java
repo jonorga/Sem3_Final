@@ -8,11 +8,20 @@
  
 package music_recommender;
 
+import java.util.ArrayList;
+
 public class NameMatchTask extends Task {
     public NameMatchTask()
     {
         super();
         setTaskName("NameMatch");
+    }
+
+    @Override
+    public void ProcessResults(ArrayList<String> results) {
+        String result = results.get(0);
+        if (result.equals("NameMatchSuccess"))
+            System.out.println("Name match completed successfully...");
     }
     
     /**

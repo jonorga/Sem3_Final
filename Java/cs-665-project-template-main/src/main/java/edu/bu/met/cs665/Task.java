@@ -39,6 +39,7 @@ public abstract class Task {
 
     public void DoTask()
     {
+        ArrayList<String> results = new ArrayList<String>();
         try
         {
             ProcessBuilder processBuilder = new ProcessBuilder("python", "testpy.py", taskName);
@@ -48,16 +49,17 @@ public abstract class Task {
             String result = "";
             while (sc.hasNext())
             {
-                result = sc.next();
-                System.out.println(result);
+                results.add(sc.next());
             }
-            if (result.equals("success")) System.out.println(taskName + " Task complete");
         }
         catch (Exception e)
         {
             System.out.println(taskName + " Task IO exception");
         }
+        ProcessResults(results);
     }
+
+    public abstract void ProcessResults(ArrayList<String> results);
 
     /**
      * This method gets the email from the create email behavior

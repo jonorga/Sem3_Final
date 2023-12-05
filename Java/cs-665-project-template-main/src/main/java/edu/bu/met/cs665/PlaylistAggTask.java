@@ -8,11 +8,20 @@
  
 package music_recommender;
 
+import java.util.ArrayList;
+
 public class PlaylistAggTask extends Task {
     public PlaylistAggTask()
     {
         super();
         setTaskName("PlaylistAgg");
+    }
+
+    @Override
+    public void ProcessResults(ArrayList<String> results) {
+        String result = results.get(0);
+        if (result.equals("PlaylistAggSuccess"))
+            System.out.println("Playlist Agg completed successfully...");
     }
 
     /**

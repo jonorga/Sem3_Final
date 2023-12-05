@@ -7,6 +7,11 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.concurrent.*;
 
+// TODO: Use Queen song instead as correctness test
+// TODO: Finish system
+// TODO: Make system have inputable songs
+// TODO: Run multiple song recs at the same time
+
 
 public class JTest {
 
@@ -38,6 +43,25 @@ public class JTest {
      		Thread.yield();
     	}
 
+
+    	// Count Task
+		System.out.println("Count task started...");
+		executor = Executors.newFixedThreadPool(1, ThreadFactory);
+		executor.submit(new Worker(new CountTask()));
+		executor.shutdown();
+		while (!executor.isTerminated()) {
+     		Thread.yield();
+    	}
+
+
+    	// Return Rec Task
+		System.out.println("Return Rec task started...");
+		executor = Executors.newFixedThreadPool(1, ThreadFactory);
+		executor.submit(new Worker(new ReturnRecTask()));
+		executor.shutdown();
+		while (!executor.isTerminated()) {
+     		Thread.yield();
+    	}
 
 
 

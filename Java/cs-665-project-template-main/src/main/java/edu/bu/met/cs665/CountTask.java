@@ -8,11 +8,20 @@
  
 package music_recommender;
 
+import java.util.ArrayList;
+
 public class CountTask extends Task {
     public CountTask()
     {
         super();
         setTaskName("Count");
+    }
+
+    @Override
+    public void ProcessResults(ArrayList<String> results) {
+        String result = results.get(0);
+        if (result.equals("CountSuccess"))
+            System.out.println("Count completed successfully...");
     }
 
     /**
