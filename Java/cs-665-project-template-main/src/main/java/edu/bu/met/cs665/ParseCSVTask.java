@@ -19,28 +19,17 @@ public class ParseCSVTask extends Task {
         System.out.println("ParseCSVTask DoTask method, ID: " + getId());
         try
         {
-            ProcessBuilder processBuilder = new ProcessBuilder("python", "testpy.py", "another");
+            ProcessBuilder processBuilder = new ProcessBuilder("python", "testpy.py", "NameMatch");
             Process process = processBuilder.start();
             Scanner sc = new Scanner(process.getInputStream());
-            
-            while (sc.hasNext())
-            {
-                System.out.println(sc.next());
-            }
 
-            /*
-            Scanner sc = new Scanner(new File("spotify_dataset.csv"));
-            sc.useDelimiter(",");
-            int count = 0;
+            String result = "";
             while (sc.hasNext())
             {
-                count++;
-                if (count % 1000 == 0)
-                    break;
+                result = sc.next();
+                System.out.println(result);
             }
-            sc.close();  //closes the scanner
-            System.out.println("Read " + count + " lines");
-            */
+            if (result.equals("success")) System.out.println("Parse CSV Task complete");
         }
         catch (Exception e)
         {

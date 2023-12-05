@@ -18,7 +18,7 @@ public class JTest {
 		ThreadPoolExecutor mypool = (ThreadPoolExecutor) executor;  
 		
 
-		
+
 		// Parse CSV Task
 		System.out.println("Parse CSV task started...");
 		executor.submit(new Worker(new ParseCSVTask()));
@@ -26,7 +26,6 @@ public class JTest {
 		while (!executor.isTerminated()) {
      		Thread.yield();
     	}
-    	System.out.println("Parse CSV task finished...");
 
 
 
@@ -45,7 +44,6 @@ public class JTest {
 		while (!executor.isTerminated()) {
      		Thread.yield();
     	}
-    	System.out.println("Name Match task finished...");
 
 
 
