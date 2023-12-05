@@ -2,13 +2,13 @@
  * Name: Jon Organ
  * Course: CS-665 Software Designs & Patterns
  * Date: 11/23/2023
- * File Name: ArtistRemovalTaska.java
+ * File Name: ReturnRecTask.java
  * Description: This file contains the abstract Customer class. 
  */
  
 package music_recommender;
 
-public class ArtistRemovalTask extends Task {
+public class ReturnRecTask extends Task {
    
 
     /**

@@ -19,18 +19,25 @@ public class JTest {
 		
 
 
-		// Parse CSV Task
-		System.out.println("Parse CSV task started...");
-		executor.submit(new Worker(new ParseCSVTask()));
+		// Name Match Task
+		System.out.println("Name Match task started...");
+		executor.submit(new Worker(new NameMatchTask()));
 		executor.shutdown();
 		while (!executor.isTerminated()) {
      		Thread.yield();
     	}
 
 
+    	// Playlist Agg Task
+		System.out.println("Playlist Agg task started...");
+		executor = Executors.newFixedThreadPool(1, ThreadFactory);
+		executor.submit(new Worker(new PlaylistAggTask()));
+		executor.shutdown();
+		while (!executor.isTerminated()) {
+     		Thread.yield();
+    	}
 
-
-		// Name Match Task
+		/*
 		System.out.println("Name Match task started...");
 		executor = Executors.newFixedThreadPool(3, ThreadFactory);
 		Task[] tasks = {new NameMatchTask(), new NameMatchTask(), new NameMatchTask(), new NameMatchTask()};
@@ -44,7 +51,7 @@ public class JTest {
 		while (!executor.isTerminated()) {
      		Thread.yield();
     	}
-
+		*/
 
 
 		System.out.println("Ending program");
