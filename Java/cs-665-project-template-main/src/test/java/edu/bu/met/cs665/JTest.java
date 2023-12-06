@@ -21,12 +21,13 @@ public class JTest {
 		ExecutorService executor = Executors.newFixedThreadPool(1, ThreadFactory);
 		ThreadPoolExecutor mypool = (ThreadPoolExecutor) executor;  
 		
-		// si = ["Crazy Little Thing Called Love", "Queen"]
 		String[] song_input = {"Crazy Little Thing Called Love", "Queen"};
+
+
 
 		// Name Match Task
 		System.out.println("Name Match task started...");
-		executor.submit(new Worker(new NameMatchTask()));
+		executor.submit(new Worker(new NameMatchTask(song_input)));
 		executor.shutdown();
 		while (!executor.isTerminated()) {
      		Thread.yield();
@@ -37,7 +38,7 @@ public class JTest {
     	// Playlist Agg Task
 		System.out.println("Playlist Agg task started...");
 		executor = Executors.newFixedThreadPool(1, ThreadFactory);
-		executor.submit(new Worker(new PlaylistAggTask()));
+		executor.submit(new Worker(new PlaylistAggTask(song_input)));
 		executor.shutdown();
 		while (!executor.isTerminated()) {
      		Thread.yield();
@@ -47,7 +48,7 @@ public class JTest {
     	// Count Task
 		System.out.println("Count task started...");
 		executor = Executors.newFixedThreadPool(1, ThreadFactory);
-		executor.submit(new Worker(new CountTask()));
+		executor.submit(new Worker(new CountTask(song_input)));
 		executor.shutdown();
 		while (!executor.isTerminated()) {
      		Thread.yield();
@@ -57,7 +58,7 @@ public class JTest {
     	// Return Rec Task
 		System.out.println("Return Rec task started...");
 		executor = Executors.newFixedThreadPool(1, ThreadFactory);
-		executor.submit(new Worker(new ReturnRecTask()));
+		executor.submit(new Worker(new ReturnRecTask(song_input)));
 		executor.shutdown();
 		while (!executor.isTerminated()) {
      		Thread.yield();

@@ -11,10 +11,9 @@ package music_recommender;
 import java.util.ArrayList;
 
 public class NameMatchTask extends Task {
-    public NameMatchTask()
+    public NameMatchTask(String[] song_input)
     {
-        super();
-        setTaskName("NameMatch");
+        super("NameMatch", song_input);
     }
 
     @Override

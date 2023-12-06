@@ -11,10 +11,9 @@ package music_recommender;
 import java.util.ArrayList;
 
 public class CountTask extends Task {
-    public CountTask()
+    public CountTask(String[] song_input)
     {
-        super();
-        setTaskName("Count");
+        super("Count", song_input);
     }
 
     @Override

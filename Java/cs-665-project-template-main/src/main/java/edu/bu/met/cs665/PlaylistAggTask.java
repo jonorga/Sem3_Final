@@ -11,10 +11,9 @@ package music_recommender;
 import java.util.ArrayList;
 
 public class PlaylistAggTask extends Task {
-    public PlaylistAggTask()
+    public PlaylistAggTask(String[] song_input)
     {
-        super();
-        setTaskName("PlaylistAgg");
+        super("PlaylistAgg", song_input);
     }
 
     @Override

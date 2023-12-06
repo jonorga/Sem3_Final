@@ -14,21 +14,19 @@ import java.util.*;
 public abstract class Task {
     private static final AtomicInteger ID_GENERATOR = new AtomicInteger();
     private final int id;
-    private String taskName;
+    private final String[] song_input;
+    private final String taskName;
 
 
-    public Task()
+    public Task(String taskName, String[] song_input)
     {
         this.id = ID_GENERATOR.incrementAndGet();
+        this.taskName = taskName;
+        this.song_input = song_input;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setTaskName(String taskName)
-    {
-        this.taskName = taskName;
     }
 
     public String getTaskName()
@@ -42,7 +40,8 @@ public abstract class Task {
         ArrayList<String> results = new ArrayList<String>();
         try
         {
-            ProcessBuilder processBuilder = new ProcessBuilder("python", "testpy.py", taskName);
+            ProcessBuilder processBuilder = new ProcessBuilder("python", "testpy.py", taskName, 
+                "Song", song_input[0], "Artist", song_input[1]);
             Process process = processBuilder.start();
             Scanner sc = new Scanner(process.getInputStream());
 

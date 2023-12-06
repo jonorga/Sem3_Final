@@ -4,6 +4,24 @@ import numpy as np
 pd.options.mode.chained_assignment = None  # default='warn'
 
 input_arg = sys.argv[1]
+song_name = ""
+song_start = False
+artist_name = ""
+artist_start = False
+for args in sys.argv:
+	if args == "Song":
+		song_start = True
+	elif song_start and args != "Artist":
+		song_name += args + " "
+	if args == "Artist":
+		song_start = False
+		artist_start = True
+	elif artist_start:
+		artist_name += args + " "
+song_name = song_name[:-1]
+artist_name = artist_name[:-1]
+si = [song_name, artist_name]
+
 
 def NameMatch(song_info):
 	df = pd.read_csv("spotify_dataset.csv")
@@ -66,16 +84,12 @@ def ReturnRec(song_info):
 
 
 if input_arg == "NameMatch":
-	si = ["Crazy Little Thing Called Love", "Queen"]
 	NameMatch(si)
 elif input_arg == "PlaylistAgg":
-	si = ["Crazy Little Thing Called Love", "Queen"]
 	PlaylistAgg(si)
 elif input_arg == "Count":
-	si = ["Crazy Little Thing Called Love", "Queen"]
 	Count(si)
 elif input_arg == "ReturnRec":
-	si = ["Crazy Little Thing Called Love", "Queen"]
 	ReturnRec(si)
 
 

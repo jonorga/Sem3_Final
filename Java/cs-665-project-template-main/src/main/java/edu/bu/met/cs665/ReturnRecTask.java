@@ -11,10 +11,9 @@ package music_recommender;
 import java.util.ArrayList;
 
 public class ReturnRecTask extends Task {
-   public ReturnRecTask()
+   public ReturnRecTask(String[] song_input)
     {
-        super();
-        setTaskName("ReturnRec");
+        super("ReturnRec", song_input);
     }
 
     @Override
@@ -25,7 +24,6 @@ public class ReturnRecTask extends Task {
         while (i < list_size)
         {
             result = results.get(i);
-            System.out.println(result);
             if (result.equals("Song:")) {
                 song_int = i;
             }
