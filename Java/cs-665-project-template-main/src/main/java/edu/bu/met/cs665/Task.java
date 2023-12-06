@@ -85,6 +85,7 @@ public abstract class Task {
         catch (Exception e)
         {
             System.out.println(taskName + " Task IO exception");
+            return "Fail";
         }
         return ProcessResults(results);
     }

@@ -7,11 +7,9 @@ import org.junit.Ignore;
 import java.util.*;
 import java.util.concurrent.*;
 
-// TODO: Build out invalid input test
 // TODO: update documentation for Worker, Task and all subclasses
 
 public class JTest {
-	@Ignore
 	@Test
 	public void TestMultipleInputs() {
 		System.out.println("Starting multiple input test");
@@ -43,10 +41,9 @@ public class JTest {
 	    	}
 	    }
 
-		System.out.println("Ending multiple input test\n\n");
+		System.out.println("Completing multiple input test\n\n");
 	}
 
-	@Ignore
 	@Test
 	public void TestSingleInput() {
 		System.out.println("Starting single input test");
@@ -71,22 +68,19 @@ public class JTest {
 	    	}
 	    }
 
-		System.out.println("Ending single input test\n\n");
+		System.out.println("Completing single input test\n\n");
 	}
 
-	@Ignore
+	
 	@Test
 	public void TestSongNotInList() {
-		System.out.println("Starting invalid input test");
+		System.out.println("Starting song not in list test");
  		ThreadFactory ThreadFactory = Executors.defaultThreadFactory();
 		
 		String[] song_input = {"foo", "bar"};
-		String[] taskTypes = {"NameMatch", "PlaylistAgg", "Count", "ReturnRec"};
-		Worker worker = null;
-		ExecutorService executor;
-		executor = Executors.newFixedThreadPool(1, ThreadFactory);
+		ExecutorService executor = Executors.newFixedThreadPool(1, ThreadFactory);
 	
-		worker = new Worker(new NameMatchTask(song_input));
+		Worker worker = new Worker(new NameMatchTask(song_input));
 		executor.submit(worker);
 		executor.shutdown();
 		while (!executor.isTerminated()) {
@@ -94,11 +88,24 @@ public class JTest {
 	    }
 		assertEquals("Fail", worker.getResult());
 
-		System.out.println("Ending invalid input test\n\n");
+		System.out.println("Completing invalid input test\n\n");
 	}
 
 	@Test
 	public void TestInvalidInput() {
+		System.out.println("Starting song not in list test");
+ 		ThreadFactory ThreadFactory = Executors.defaultThreadFactory();
 
+ 		String[] song_input = {"foo"};
+ 		ExecutorService executor = Executors.newFixedThreadPool(1, ThreadFactory);
+	
+		Worker worker = new Worker(new NameMatchTask(song_input));
+		executor.submit(worker);
+		executor.shutdown();
+		while (!executor.isTerminated()) {
+	   		Thread.yield();
+	    }
+	    assertEquals("Fail", worker.getResult());
+		System.out.println("Completing invalid input test\n\n");
 	}
 }
