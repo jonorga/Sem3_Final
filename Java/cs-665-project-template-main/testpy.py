@@ -58,7 +58,7 @@ def ReturnRec(song_info):
 	name = song_info[0]
 	union_name = artist + name
 	count_df = pd.read_csv("rec_c" + union_name + ".csv")
-	#os.remove("rec_c" + union_name + ".csv")
+	os.remove("rec_c" + union_name + ".csv")
 	rec = count_df['name'].iloc[0].split("     ")
 	print("Song:", rec[0])
 	print("Artist:", rec[1])

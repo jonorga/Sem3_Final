@@ -7,9 +7,8 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.concurrent.*;
 
-// TODO: Use Queen song instead as correctness test
-// TODO: Finish system
 // TODO: Make system have inputable songs
+// TODO: System shows input and output songs when done
 // TODO: Run multiple song recs at the same time
 
 
@@ -22,7 +21,8 @@ public class JTest {
 		ExecutorService executor = Executors.newFixedThreadPool(1, ThreadFactory);
 		ThreadPoolExecutor mypool = (ThreadPoolExecutor) executor;  
 		
-
+		// si = ["Crazy Little Thing Called Love", "Queen"]
+		String[] song_input = {"Crazy Little Thing Called Love", "Queen"};
 
 		// Name Match Task
 		System.out.println("Name Match task started...");
