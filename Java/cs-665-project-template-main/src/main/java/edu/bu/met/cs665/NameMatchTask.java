@@ -27,9 +27,17 @@ public class NameMatchTask extends Task {
      * method reads the first result from the task and prints to the console if it was successful
      */
     @Override
-    public void ProcessResults(ArrayList<String> results) {
+    public String ProcessResults(ArrayList<String> results) {
+        if (results.size() == 0)
+            return "Fail";
         String result = results.get(0);
-        if (result.equals("NameMatchSuccess"))
+        if (result.equals("NameMatchSuccess")) {
             System.out.println("Thread " + getId() + ", name match completed successfully...");
+            return "Success";
+        }
+        else {
+            System.out.println("Thread " + getId() + ", name match failed...");
+            return "Fail";
+        }
     }
 }

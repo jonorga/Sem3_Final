@@ -10,9 +10,14 @@ package music_recommender;
 
 public class Worker implements Runnable {
     private final Task task;
+    private String result;
 
     public Worker(final Task task) {
         this.task = task;
+    }
+
+    public String getResult() {
+        return result;
     }
 
     /**
@@ -21,6 +26,6 @@ public class Worker implements Runnable {
      */
     @Override
     public void run() {
-        task.DoTask();
+        result = task.DoTask();
     }
 }

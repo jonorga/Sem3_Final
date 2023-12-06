@@ -28,7 +28,7 @@ public class ReturnRecTask extends Task {
      * then prints those values and the input song to the console
      */
     @Override
-    public void ProcessResults(ArrayList<String> results) {
+    public String ProcessResults(ArrayList<String> results) {
         int list_size = results.size();
         int i = 0, song_int = 0, artist_int = 0;
         String result = "", song_name = "", artist_name = "";
@@ -62,5 +62,7 @@ public class ReturnRecTask extends Task {
         System.out.println("Song recommendation:");
         System.out.println("Song name: " + song_name);
         System.out.println("Artist name: " + artist_name);
+
+        return "";
     }
 }

@@ -66,7 +66,7 @@ public abstract class Task {
      * python script with the input song info and the relevant task name. After that it gathers the 
      * returned results and passes them to the ProcessResults method
      */
-    public void DoTask()
+    public String DoTask()
     {
         ArrayList<String> results = new ArrayList<String>();
         try
@@ -86,7 +86,7 @@ public abstract class Task {
         {
             System.out.println(taskName + " Task IO exception");
         }
-        ProcessResults(results);
+        return ProcessResults(results);
     }
 
 
@@ -94,5 +94,5 @@ public abstract class Task {
      * This is the abstract ProcessResults method, this was declared to force the sub-classes to
      * implement their own method to handle the results of their task
      */
-    public abstract void ProcessResults(ArrayList<String> results);
+    public abstract String ProcessResults(ArrayList<String> results);
 }

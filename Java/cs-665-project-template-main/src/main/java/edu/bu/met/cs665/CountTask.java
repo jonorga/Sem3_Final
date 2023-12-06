@@ -27,9 +27,10 @@ public class CountTask extends Task {
      * method reads the first result from the task and prints to the console if it was successful
      */
     @Override
-    public void ProcessResults(ArrayList<String> results) {
+    public String ProcessResults(ArrayList<String> results) {
         String result = results.get(0);
         if (result.equals("CountSuccess"))
             System.out.println("Thread " + getId() + ", count completed successfully...");
+        return "";
     }
 }
