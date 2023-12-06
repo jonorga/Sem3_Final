@@ -3,7 +3,9 @@
  * Course: CS-665 Software Designs & Patterns
  * Date: 11/23/2023
  * File Name: ReturnRecTask.java
- * Description: This file contains the abstract Customer class. 
+ * Description: This file contains the ReturnRecTask class. This class extends the Task class. It includes
+ * a constructor method which calls the super method. It also overrides the ProcessResults method as 
+ * required.
  */
  
 package music_recommender;
@@ -11,11 +13,20 @@ package music_recommender;
 import java.util.ArrayList;
 
 public class ReturnRecTask extends Task {
-   public ReturnRecTask(String[] song_input)
+    /**
+     * This is the constructor method which calls super with the necessary variables
+     */
+    public ReturnRecTask(String[] song_input)
     {
         super("ReturnRec", song_input);
     }
 
+
+    /**
+     * This is the ProcessResults method which overrides the same method from the parent class. This
+     * method takes the results from the task and parses out the recommended song name and artist
+     * then prints those values and the input song to the console
+     */
     @Override
     public void ProcessResults(ArrayList<String> results) {
         int list_size = results.size();
@@ -52,9 +63,4 @@ public class ReturnRecTask extends Task {
         System.out.println("Song name: " + song_name);
         System.out.println("Artist name: " + artist_name);
     }
-
-    /**
-     * This method gets the email from the create email behavior
-     * @return String
-     */
 }

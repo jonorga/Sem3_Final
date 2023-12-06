@@ -3,11 +3,10 @@ package test;
 import music_recommender.*;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import java.io.FileReader;
 import java.util.*;
 import java.util.concurrent.*;
 
-// TODO: File and method blocks
+// TODO: Build out other tests
 
 public class JTest {
 
@@ -15,8 +14,6 @@ public class JTest {
 	public void TestBusinessCustomer() {
 		System.out.println("Starting program");
  		ThreadFactory ThreadFactory = Executors.defaultThreadFactory();
-		
-		//ThreadPoolExecutor mypool = (ThreadPoolExecutor) executor;  
 		
 		String[] song_input1 = {"Crazy Little Thing Called Love", "Queen"};
 		String[] song_input2 = {"Harder, Better, Faster, Stronger", "Daft Punk"};

@@ -1,8 +1,19 @@
+### *****
+### Name: Jon Organ
+### Course: CS-665 Software Designs & Patterns
+### Date: 11/23/2023
+### File Name: PlaylistAggTask.java
+### Description: This file contains the PlaylistAggTask class. This class extends the Task class. It includes
+### a constructor method which calls the super method. It also overrides the ProcessResults method as 
+### required.
+### *****
+
 import sys, os
 import pandas as pd
 import numpy as np
 pd.options.mode.chained_assignment = None  # default='warn'
 
+# Parse out the input song from the command line arguments
 input_arg = sys.argv[1]
 song_name = ""
 song_start = False
@@ -23,6 +34,10 @@ artist_name = artist_name[:-1]
 si = [song_name, artist_name]
 
 
+### *****
+### This function performs the NameMatch task. This finds all of the playlists that the input song is on 
+### from the dataset and makes a CSV file of the playlists the song was found on.
+### *****
 def NameMatch(song_info):
 	df = pd.read_csv("spotify_dataset.csv")
 	artist = song_info[1]
@@ -36,6 +51,11 @@ def NameMatch(song_info):
 			print("NameMatchSuccess")
 
 
+### *****
+### This function performs the PlaylistAgg task. This finds takes the CSV file generated from the 
+### NameMatch task and finds all the songs on those playlists and makes a new CSV file with these songs.
+### It also deletes the CSV file generated from the NameMatch task.
+### *****
 def PlaylistAgg(song_info):
 	artist = song_info[1]
 	name = song_info[0]
@@ -52,6 +72,12 @@ def PlaylistAgg(song_info):
 	print("PlaylistAggSuccess")
 
 
+### *****
+### This function performs the Count task. This finds takes the CSV file generated from the 
+### PlaylistAgg task and counts the number of occurrences of each song and makes a new file with only
+### the unique occurrences and how often they occur. It also deletes the CSV file generated from the 
+### PlaylistAgg task.
+### *****
 def Count(song_info):
 	artist = song_info[1]
 	name = song_info[0]
@@ -71,6 +97,11 @@ def Count(song_info):
 	print("CountSuccess")
 
 
+### *****
+### This function performs the ReturnRec task. This finds takes the CSV file generated from the 
+### Count task and returns the one with the highest count. It also deletes the CSV file generated from 
+### the Count task.
+### *****
 def ReturnRec(song_info):
 	artist = song_info[1]
 	name = song_info[0]
