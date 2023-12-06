@@ -20,7 +20,7 @@ public class CountTask extends Task {
     public void ProcessResults(ArrayList<String> results) {
         String result = results.get(0);
         if (result.equals("CountSuccess"))
-            System.out.println("Count completed successfully...");
+            System.out.println("Thread " + getId() + ", count completed successfully...");
     }
 
     /**

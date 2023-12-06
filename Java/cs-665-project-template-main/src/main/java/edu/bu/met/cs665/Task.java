@@ -34,6 +34,10 @@ public abstract class Task {
         return taskName;
     }
 
+    public String[] getSongInput()
+    {
+        return song_input;
+    }
 
     public void DoTask()
     {

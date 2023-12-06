@@ -44,9 +44,13 @@ public class ReturnRecTask extends Task {
             }
             i++;
         }
+        String[] song_input = getSongInput();
+        System.out.println("Input song:" );
+        System.out.println("Song name: " + song_input[0]);
+        System.out.println("Artist name: " + song_input[1]);
         System.out.println("Song recommendation:");
-        System.out.println("Song: " + song_name);
-        System.out.println("Artist: " + artist_name);
+        System.out.println("Song name: " + song_name);
+        System.out.println("Artist name: " + artist_name);
     }
 
     /**

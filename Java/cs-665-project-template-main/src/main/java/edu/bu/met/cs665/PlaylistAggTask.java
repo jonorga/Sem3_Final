@@ -20,7 +20,7 @@ public class PlaylistAggTask extends Task {
     public void ProcessResults(ArrayList<String> results) {
         String result = results.get(0);
         if (result.equals("PlaylistAggSuccess"))
-            System.out.println("Playlist Agg completed successfully...");
+            System.out.println("Thread " + getId() + ", playlist Agg completed successfully...");
     }
 
     /**

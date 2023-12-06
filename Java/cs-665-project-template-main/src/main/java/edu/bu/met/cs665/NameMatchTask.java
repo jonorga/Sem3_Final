@@ -20,7 +20,7 @@ public class NameMatchTask extends Task {
     public void ProcessResults(ArrayList<String> results) {
         String result = results.get(0);
         if (result.equals("NameMatchSuccess"))
-            System.out.println("Name match completed successfully...");
+            System.out.println("Thread " + getId() + ", name match completed successfully...");
     }
     
     /**

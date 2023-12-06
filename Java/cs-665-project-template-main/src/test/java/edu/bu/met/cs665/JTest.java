@@ -7,10 +7,7 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.concurrent.*;
 
-// TODO: Make system have inputable songs
-// TODO: System shows input and output songs when done
-// TODO: Run multiple song recs at the same time
-
+// TODO: File and method blocks
 
 public class JTest {
 
@@ -18,70 +15,34 @@ public class JTest {
 	public void TestBusinessCustomer() {
 		System.out.println("Starting program");
  		ThreadFactory ThreadFactory = Executors.defaultThreadFactory();
-		ExecutorService executor = Executors.newFixedThreadPool(1, ThreadFactory);
-		ThreadPoolExecutor mypool = (ThreadPoolExecutor) executor;  
 		
-		String[] song_input = {"Crazy Little Thing Called Love", "Queen"};
+		//ThreadPoolExecutor mypool = (ThreadPoolExecutor) executor;  
+		
+		String[] song_input1 = {"Crazy Little Thing Called Love", "Queen"};
+		String[] song_input2 = {"Harder, Better, Faster, Stronger", "Daft Punk"};
+		String[] song_input3 = {"Yonkers", "Tyler, The Creator"};
+		String[][] input_songs = {song_input1, song_input2, song_input3};
 
-
-
-		// Name Match Task
-		System.out.println("Name Match task started...");
-		executor.submit(new Worker(new NameMatchTask(song_input)));
-		executor.shutdown();
-		while (!executor.isTerminated()) {
-     		Thread.yield();
-    	}
-
-
-
-    	// Playlist Agg Task
-		System.out.println("Playlist Agg task started...");
-		executor = Executors.newFixedThreadPool(1, ThreadFactory);
-		executor.submit(new Worker(new PlaylistAggTask(song_input)));
-		executor.shutdown();
-		while (!executor.isTerminated()) {
-     		Thread.yield();
-    	}
-
-
-    	// Count Task
-		System.out.println("Count task started...");
-		executor = Executors.newFixedThreadPool(1, ThreadFactory);
-		executor.submit(new Worker(new CountTask(song_input)));
-		executor.shutdown();
-		while (!executor.isTerminated()) {
-     		Thread.yield();
-    	}
-
-
-    	// Return Rec Task
-		System.out.println("Return Rec task started...");
-		executor = Executors.newFixedThreadPool(1, ThreadFactory);
-		executor.submit(new Worker(new ReturnRecTask(song_input)));
-		executor.shutdown();
-		while (!executor.isTerminated()) {
-     		Thread.yield();
-    	}
-
-
-
-		/*
-		System.out.println("Name Match task started...");
-		executor = Executors.newFixedThreadPool(3, ThreadFactory);
-		Task[] tasks = {new NameMatchTask(), new NameMatchTask(), new NameMatchTask(), new NameMatchTask()};
-		ArrayList<Worker> workers = new ArrayList<>(Arrays.asList( 
-			new Worker(tasks[0]), new Worker(tasks[1]), new Worker(tasks[2]), new Worker(tasks[3])
-			));
-		for (Worker worker : workers) {
-			executor.submit(worker);
-		}
-		executor.shutdown();
-		while (!executor.isTerminated()) {
-     		Thread.yield();
-    	}
-		*/
-
+		
+		String[] taskTypes = {"NameMatch", "PlaylistAgg", "Count", "ReturnRec"};
+		ExecutorService executor;
+		for (String taskType : taskTypes) {
+			executor = Executors.newFixedThreadPool(3, ThreadFactory);
+			for (String[] si : input_songs) {
+				if (taskType.equals("NameMatch"))
+					executor.submit(new Worker(new NameMatchTask(si)));
+				else if (taskType.equals("PlaylistAgg"))
+					executor.submit(new Worker(new PlaylistAggTask(si)));
+				else if (taskType.equals("Count"))
+					executor.submit(new Worker(new CountTask(si)));
+				else if (taskType.equals("ReturnRec"))
+					executor.submit(new Worker(new ReturnRecTask(si)));
+			}
+			executor.shutdown();
+			while (!executor.isTerminated()) {
+	     		Thread.yield();
+	    	}
+	    }
 
 		System.out.println("Ending program");
 	}
