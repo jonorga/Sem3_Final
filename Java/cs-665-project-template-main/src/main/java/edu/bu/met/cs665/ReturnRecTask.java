@@ -63,6 +63,6 @@ public class ReturnRecTask extends Task {
         System.out.println("Song name: " + song_name);
         System.out.println("Artist name: " + artist_name);
 
-        return "";
+        return "Success";
     }
 }

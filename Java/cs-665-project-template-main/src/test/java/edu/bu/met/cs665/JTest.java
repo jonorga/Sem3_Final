@@ -23,6 +23,7 @@ public class JTest {
 		
 		String[] taskTypes = {"NameMatch", "PlaylistAgg", "Count", "ReturnRec"};
 		ExecutorService executor;
+		Worker worker = null;
 		for (String taskType : taskTypes) {
 			executor = Executors.newFixedThreadPool(3, ThreadFactory);
 			for (String[] si : input_songs) {
@@ -32,17 +33,20 @@ public class JTest {
 					executor.submit(new Worker(new PlaylistAggTask(si)));
 				else if (taskType.equals("Count"))
 					executor.submit(new Worker(new CountTask(si)));
-				else if (taskType.equals("ReturnRec"))
-					executor.submit(new Worker(new ReturnRecTask(si)));
+				else if (taskType.equals("ReturnRec")) {
+					worker = new Worker(new ReturnRecTask(si));
+					executor.submit(worker);
+				}
 			}
 			executor.shutdown();
 			while (!executor.isTerminated()) {
 	     		Thread.yield();
 	    	}
 	    }
-
+	    assertEquals("Success", worker.getResult());
 		System.out.println("Completing multiple input test\n\n");
 	}
+
 
 	@Test
 	public void TestSingleInput() {
@@ -52,6 +56,7 @@ public class JTest {
 		String[] song_input = {"Crazy Little Thing Called Love", "Queen"};
 		String[] taskTypes = {"NameMatch", "PlaylistAgg", "Count", "ReturnRec"};
 		ExecutorService executor;
+		Worker worker = null;
 		for (String taskType : taskTypes) {
 			executor = Executors.newFixedThreadPool(1, ThreadFactory);
 			if (taskType.equals("NameMatch"))
@@ -60,18 +65,20 @@ public class JTest {
 				executor.submit(new Worker(new PlaylistAggTask(song_input)));
 			else if (taskType.equals("Count"))
 				executor.submit(new Worker(new CountTask(song_input)));
-			else if (taskType.equals("ReturnRec"))
-				executor.submit(new Worker(new ReturnRecTask(song_input)));
+			else if (taskType.equals("ReturnRec")) {
+				worker = new Worker(new ReturnRecTask(song_input));
+				executor.submit(worker);
+			}
 			executor.shutdown();
 			while (!executor.isTerminated()) {
 	     		Thread.yield();
 	    	}
 	    }
-
+	    assertEquals("Success", worker.getResult());
 		System.out.println("Completing single input test\n\n");
 	}
 
-	
+
 	@Test
 	public void TestSongNotInList() {
 		System.out.println("Starting song not in list test");
@@ -90,6 +97,7 @@ public class JTest {
 
 		System.out.println("Completing invalid input test\n\n");
 	}
+
 
 	@Test
 	public void TestInvalidInput() {
