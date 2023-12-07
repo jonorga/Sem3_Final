@@ -24,7 +24,10 @@ public class CountTask extends Task {
 
     /**
      * This is the ProcessResults method which overrides the same method from the parent class. This
-     * method reads the first result from the task and prints to the console if it was successful
+     * method reads the first result from the task and prints to the console if it was successful.
+     * It also an empty string as a placeholder should there be an different error handling in the
+     * future.
+     * @return String
      */
     @Override
     public String ProcessResults(ArrayList<String> results) {

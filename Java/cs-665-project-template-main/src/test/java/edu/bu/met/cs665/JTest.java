@@ -7,8 +7,6 @@ import org.junit.Ignore;
 import java.util.*;
 import java.util.concurrent.*;
 
-// TODO: update documentation for Worker, Task and all subclasses
-
 public class JTest {
 	@Test
 	public void TestMultipleInputs() {

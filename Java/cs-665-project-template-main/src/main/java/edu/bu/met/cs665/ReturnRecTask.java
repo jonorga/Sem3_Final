@@ -25,7 +25,9 @@ public class ReturnRecTask extends Task {
     /**
      * This is the ProcessResults method which overrides the same method from the parent class. This
      * method takes the results from the task and parses out the recommended song name and artist
-     * then prints those values and the input song to the console
+     * then prints those values and the input song to the console. It also returns success after the
+     * method has completed
+     * @return String
      */
     @Override
     public String ProcessResults(ArrayList<String> results) {

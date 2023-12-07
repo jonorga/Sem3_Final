@@ -64,7 +64,8 @@ public abstract class Task {
     /**
      * This is the DoTask method that is actually called in the run method of the worker. It calls the
      * python script with the input song info and the relevant task name. After that it gathers the 
-     * returned results and passes them to the ProcessResults method
+     * returned results and passes them to the ProcessResults method and return the results
+     * @return String
      */
     public String DoTask()
     {
@@ -94,6 +95,7 @@ public abstract class Task {
     /**
      * This is the abstract ProcessResults method, this was declared to force the sub-classes to
      * implement their own method to handle the results of their task
+     * @return String
      */
     public abstract String ProcessResults(ArrayList<String> results);
 }
