@@ -32,8 +32,12 @@ public class PlaylistAggTask extends Task {
     @Override
     public String ProcessResults(ArrayList<String> results) {
         String result = results.get(0);
-        if (result.equals("PlaylistAggSuccess"))
+        if (result.equals("PlaylistAggSuccess")) {
             System.out.println("Thread " + getId() + ", playlist Agg completed successfully...");
-        return "";
+            return "Success";
+        }
+        else {
+            return "Fail";
+        }
     }
 }

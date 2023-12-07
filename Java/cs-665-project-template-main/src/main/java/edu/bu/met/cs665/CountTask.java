@@ -32,8 +32,12 @@ public class CountTask extends Task {
     @Override
     public String ProcessResults(ArrayList<String> results) {
         String result = results.get(0);
-        if (result.equals("CountSuccess"))
+        if (result.equals("CountSuccess")) {
             System.out.println("Thread " + getId() + ", count completed successfully...");
-        return "";
+            return "Success";
+        }
+        else {
+            return "Fail";
+        }
     }
 }

@@ -32,6 +32,12 @@ public class ReturnRecTask extends Task {
     @Override
     public String ProcessResults(ArrayList<String> results) {
         int list_size = results.size();
+        if (list_size == 0) {
+            System.out.println("Invalid result returned to ReturnRecTask...");
+            return "Fail";
+        }
+
+
         int i = 0, song_int = 0, artist_int = 0;
         String result = "", song_name = "", artist_name = "";
         while (i < list_size)
