@@ -15,7 +15,9 @@ Thread Pool pattern to create a music recommendation system.
 
 # GitHub Repository Link:
 https://github.com/jonorga/Sem3_Final
-*This repository also includes a separate Python standalone project*
+*This repository also includes a separate Python standalone project. **Important note: in order***
+***to run this project the dataset is required. The dataset was too large to be included in the***
+***original submission, so it can be found at the above repo in the project in the Java folder***
 
 # Implementation Description 
 

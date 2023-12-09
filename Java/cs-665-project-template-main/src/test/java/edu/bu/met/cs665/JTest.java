@@ -8,7 +8,6 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class JTest {
-	
 	@Test
 	public void TestMultipleInputs() {
 		System.out.println("Starting multiple input test");
@@ -76,6 +75,7 @@ public class JTest {
 	    assertEquals("Success", worker.getResult());
 		System.out.println("Completing single input test\n\n");
 	}
+	
 	
 	@Test
 	public void TestSongNotInList() {
